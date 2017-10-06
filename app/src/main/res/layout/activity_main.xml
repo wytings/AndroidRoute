@@ -2,12 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="30dp">
 
-    <TextView
+    <Button
+        android:id="@+id/openWeb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Hello World!" />
+        android:text="open web" />
+
+    <Button
+        android:id="@+id/activityA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Activity A (Auto Proceed to D)" />
+
+    <Button
+        android:id="@+id/activityAA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Activity A (Manual Proceed to D)" />
+
+    <Button
+        android:id="@+id/activityC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Activity C" />
 
 </LinearLayout>
