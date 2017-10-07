@@ -8,7 +8,7 @@ import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.WildcardTypeName;
-import com.wytings.annotation.RouteModule;
+import com.wytings.annotation.Route;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +37,7 @@ public class RouteProcessor extends BaseProcessor {
 
     @Override
     public Class<?> supportedAnnotationType() {
-        return RouteModule.class;
+        return Route.class;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class RouteProcessor extends BaseProcessor {
 
         for (Element element : elementSet) {
             Element enclosingElement = element.getEnclosingElement();
-            RouteModule routeAnnotation = element.getAnnotation(RouteModule.class);
+            Route routeAnnotation = element.getAnnotation(Route.class);
             mapLoaderMethodBuilder.addStatement("map.put($S, $T.class)", routeAnnotation.value(), ClassName.get(element.asType()));
             printLog("enclosingElement = " + enclosingElement.toString() + ", routeAnnotation = " + routeAnnotation);
         }

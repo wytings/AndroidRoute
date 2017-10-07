@@ -1,11 +1,10 @@
 package com.wytings.route.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.wytings.annotation.AutoValue;
-import com.wytings.annotation.RouteModule;
+import com.wytings.annotation.Route;
 import com.wytings.route.api.RouteManager;
 
 /**
@@ -15,7 +14,7 @@ import com.wytings.route.api.RouteManager;
  */
 
 
-@RouteModule("activityB")
+@Route("activityB")
 public class ActivityB extends BaseActivity {
 
     @AutoValue

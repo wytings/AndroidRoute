@@ -1,14 +1,12 @@
 package com.wytings.route.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.wytings.annotation.AutoValue;
-import com.wytings.annotation.RouteModule;
+import com.wytings.annotation.Route;
 import com.wytings.route.api.RouteManager;
 import com.wytings.route.module.ModuleParcelable;
-import com.wytings.route.module.ModuleSerializable;
 
 /**
  * Created by rex on 06/10/2017.
@@ -16,7 +14,7 @@ import com.wytings.route.module.ModuleSerializable;
  * @author wytings@gmail.com
  */
 
-@RouteModule("activityD")
+@Route("activityD")
 public class ActivityD extends BaseActivity {
 
     @AutoValue("f")

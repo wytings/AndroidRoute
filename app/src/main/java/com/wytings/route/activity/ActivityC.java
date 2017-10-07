@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.wytings.annotation.AutoValue;
-import com.wytings.annotation.RouteModule;
+import com.wytings.annotation.Route;
 import com.wytings.route.api.RouteManager;
 
 /**
@@ -13,7 +13,7 @@ import com.wytings.route.api.RouteManager;
  * @author wytings@gmail.com
  */
 
-@RouteModule("activityC")
+@Route("activityC")
 public class ActivityC extends BaseActivity {
 
 
