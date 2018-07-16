@@ -22,14 +22,16 @@ public class SchemeFilterActivity extends Activity {
         Uri uri = getIntent().getData();
         Log.i("wytings", "uri = " + uri);
 
-        String scheme = uri.getScheme();
-        if ("http".equals(scheme) || "https".equals(scheme)) {
-            String routeModule = uri.getLastPathSegment();
-            if (!TextUtils.isEmpty(routeModule)) {
-                RouteManager.getInstance().build(routeModule + "?" + uri.getQuery()).go(this);
+        if (uri != null) {
+            String scheme = uri.getScheme();
+            if ("http".equals(scheme) || "https".equals(scheme)) {
+                String routeModule = uri.getLastPathSegment();
+                if (!TextUtils.isEmpty(routeModule)) {
+                    RouteManager.getInstance().build(routeModule + "?" + uri.getQuery()).go(this);
+                }
+            } else {
+                RouteManager.getInstance().build(uri.toString()).go(this);
             }
-        } else {
-            RouteManager.getInstance().build(uri.toString()).go(this);
         }
 
         finish();

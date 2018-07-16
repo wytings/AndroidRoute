@@ -115,8 +115,9 @@ public class AutoValueProcessor extends BaseProcessor {
                 }
                 AutoValue auto = fieldElement.getAnnotation(AutoValue.class);
                 String keyName = fieldElement.getSimpleName().toString();
-                if (Utils.isNotEmpty(auto.value())) {
-                    keyName = auto.value();
+                String value = auto.value();
+                if (value.length() != 0) {
+                    keyName = value;
                 }
 
                 addAutoValueStatement(autoMethodBuilder, keyName, fieldElement);

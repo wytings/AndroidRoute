@@ -7,7 +7,13 @@ package com.wytings.route.api;
  */
 
 
-public class RouteConst {
+public final class RouteConst {
+
     public static final String NEXT_INTENT = "route_next_intent";
     public static final String IS_AUTO_PROCEED = "route_is_auto_proceed";
+
+
+    private RouteConst() throws IllegalAccessException {
+        throw new IllegalAccessException("no instance");
+    }
 }

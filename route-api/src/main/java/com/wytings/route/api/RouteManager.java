@@ -69,16 +69,6 @@ public class RouteManager {
         Log.i("wytings", "loading route map from generate file");
     }
 
-    public void initialize(Context context, Map<String, Class<?>> map) {
-        application = context.getApplicationContext();
-        if (map == null) {
-            return;
-        }
-        routeMap.clear();
-        routeMap.putAll(map);
-        Log.i("wytings", "add route map manually");
-    }
-
     public RouteMeta build(String modulePath) {
         return new RouteMeta(modulePath);
     }
