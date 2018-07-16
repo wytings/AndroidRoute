@@ -73,8 +73,4 @@ public class RouteMeta {
     public void go(Context context) {
         RouteManager.getInstance().navigate(context, this);
     }
-
-    public void go() {
-        go(null);
-    }
 }

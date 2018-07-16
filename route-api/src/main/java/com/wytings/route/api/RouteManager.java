@@ -1,6 +1,5 @@
 package com.wytings.route.api;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,11 +25,9 @@ import static com.wytings.route.api.RouteConst.NEXT_INTENT;
 
 
 public class RouteManager {
-    @SuppressLint("StaticFieldLeak")
     private static final RouteManager ROUTER_MANAGER = new RouteManager();
     private final Map<String, Class<?>> routeMap = new HashMap<>();
     private final Map<String, IAutoValueHelper> autoValueMap = new HashMap<>();
-    private Context application;
 
     public static RouteManager getInstance() {
         return ROUTER_MANAGER;
@@ -55,8 +52,7 @@ public class RouteManager {
         }
     }
 
-    public void initialize(Context context) {
-        application = context.getApplicationContext();
+    public void initializeMapper() {
         try {
             @SuppressWarnings("unchecked")
             Class<IRouteMapLoader> mapLoaderClass = (Class<IRouteMapLoader>) Class.forName(CLASS_ROUTE_MAP_LOADER);
@@ -74,20 +70,19 @@ public class RouteManager {
     }
 
     public void navigate(Context context, RouteMeta routeMeta) {
-        if (routeMeta == null) {
+        if (context == null || routeMeta == null) {
+            Log.w("wytings", "required params has null");
             return;
         }
 
-        Intent intent = makeRouteIntent(routeMeta);
+        Intent intent = makeRouteIntent(context, routeMeta);
         if (intent == null) {
             return;
         }
 
-        Context routeContext = application;
         boolean needNewTask = true;
         if (context instanceof Activity) {
             needNewTask = false;
-            routeContext = context;
         }
 
         Intent nextIntent = intent;
@@ -108,13 +103,13 @@ public class RouteManager {
         }
 
         if (list.size() == 1) {
-            routeContext.startActivity(list.get(0));
+            context.startActivity(list.get(0));
         } else if (list.size() > 1) {
-            routeContext.startActivities(list.toArray(new Intent[0]));
+            context.startActivities(list.toArray(new Intent[0]));
         }
     }
 
-    private Intent makeRouteIntent(RouteMeta routeMeta) {
+    private Intent makeRouteIntent(Context context, RouteMeta routeMeta) {
 
         if (routeMeta == null || TextUtils.isEmpty(routeMeta.intentPath)) {
             return null;
@@ -135,7 +130,7 @@ public class RouteManager {
                     break;
                 }
 
-                Intent intent = new Intent(application, dest);
+                Intent intent = new Intent(context, dest);
                 intent.putExtras(meta.bundle);
                 Set<String> nameSet = uri.getQueryParameterNames();
                 for (String name : nameSet) {
