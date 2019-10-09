@@ -1,9 +1,9 @@
 apply plugin: 'java'
 
 dependencies {
-    compile 'com.google.auto.service:auto-service:1.0-rc3'
-    compile 'com.squareup:javapoet:1.9.0'
-    compile project(path: ':route-annotation')
+    implementation 'com.google.auto.service:auto-service:1.0-rc6'
+    implementation 'com.squareup:javapoet:1.9.0'
+    implementation project(path: ':route-annotation')
 }
 
 compileJava {
